@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archiver</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <div class="logo">
+    <img src="../icons/icon48.png" width="20" height="20" alt="">
+    <span>Archiver</span>
+  </div>
+  <div class="header-actions">
+    <button id="btn-sync" class="btn-primary" title="立即同步">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M23 4v6h-6M1 20v-6h6"/>
+        <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+      </svg>
+      同步
+    </button>
+    <button id="btn-stop" class="btn-stop hidden" title="停止同步">停止</button>
+    <a href="../options/options.html" target="_blank" class="btn-icon" title="设置">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<div id="sync-status" class="sync-status hidden"></div>
+
+<div class="stats-bar">
+  <div class="stat"><span id="stat-total">0</span><small>总收藏</small></div>
+  <div class="stat"><span id="stat-zhihu">0</span><small>知乎</small></div>
+</div>
+
+<div class="toolbar">
+  <div class="tabs">
+    <button class="tab active" data-source="">全部</button>
+    <button class="tab" data-source="zhihu">知乎</button>
+  </div>
+  <input id="search" type="search" placeholder="搜索…" autocomplete="off">
+</div>
+
+<div id="items-list" class="items-list">
+  <div class="empty-state">暂无收藏，点击「同步」开始</div>
+</div>
+
+<footer>
+  <select id="export-format">
+    <option value="markdown">Markdown</option>
+    <option value="pdf">PDF</option>
+    <option value="word">Word</option>
+  </select>
+  <button id="btn-export" class="btn-secondary">导出</button>
+</footer>
+
+<script type="module" src="popup.js"></script>
+</body>
+</html>

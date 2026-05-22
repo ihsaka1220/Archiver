@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Archiver 设置</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="logo">
+      <img src="../icons/icon48.png" width="28" height="28" alt="">
+      <div>
+        <h1>Archiver 设置</h1>
+        <p>收藏同步助手配置</p>
+      </div>
+    </div>
+    <button id="btn-save" class="btn-primary">保存设置</button>
+  </header>
+
+  <div id="save-toast" class="toast hidden">设置已保存</div>
+
+  <main>
+    <!-- ── 数据源 ── -->
+    <section>
+      <h2>数据源</h2>
+      <div class="card">
+        <div class="field-row">
+          <label class="toggle-label">
+            <input type="checkbox" id="zhihu-enabled">
+            <span class="toggle"></span>
+            <span>同步知乎收藏</span>
+          </label>
+          <small>需在浏览器中保持知乎登录状态</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 自动同步 ── -->
+    <section>
+      <h2>自动同步</h2>
+      <div class="card">
+        <div class="field-row">
+          <label class="toggle-label">
+            <input type="checkbox" id="auto-sync">
+            <span class="toggle"></span>
+            <span>启用自动同步</span>
+          </label>
+        </div>
+        <div class="field-row" id="interval-row">
+          <label for="sync-interval">同步间隔（分钟）</label>
+          <input type="number" id="sync-interval" min="15" max="1440" value="60" class="input-sm">
+        </div>
+        <div class="field-row">
+          <label class="toggle-label">
+            <input type="checkbox" id="notifications">
+            <span class="toggle"></span>
+            <span>同步完成后显示通知</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI 设置 ── -->
+    <section>
+      <h2>AI 摘要 &amp; 分类</h2>
+      <div class="card">
+        <div class="field-row">
+          <label class="toggle-label">
+            <input type="checkbox" id="ai-enabled">
+            <span class="toggle"></span>
+            <span>启用 AI 自动摘要和标签</span>
+          </label>
+        </div>
+        <div id="ai-fields">
+          <div class="field-row">
+            <label for="ai-provider">AI 服务商</label>
+            <select id="ai-provider" class="input-sm">
+              <option value="openai">OpenAI / 兼容接口</option>
+              <option value="anthropic">Anthropic Claude</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <label for="ai-base-url">API Base URL</label>
+            <input type="url" id="ai-base-url" placeholder="https://api.openai.com" class="input-full">
+          </div>
+          <div class="field-row">
+            <label for="ai-api-key">API Key</label>
+            <input type="password" id="ai-api-key" placeholder="sk-…" class="input-full" autocomplete="off">
+          </div>
+          <div class="field-row">
+            <label for="ai-model">模型</label>
+            <input type="text" id="ai-model" placeholder="gpt-4o-mini" class="input-full">
+          </div>
+          <div class="field-row">
+            <span>连通性测试</span>
+            <button id="btn-test-ai" class="btn-secondary" type="button">测试 AI 配置</button>
+          </div>
+          <div id="ai-test-status" class="ai-test-status hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 分类管理 ── -->
+    <section>
+      <h2>自定义分类</h2>
+      <div class="card">
+        <div id="categories-list" class="categories-list"></div>
+        <div class="field-row">
+          <input type="text" id="new-category" placeholder="新分类名称" class="input-full">
+          <button id="btn-add-category" class="btn-secondary">添加</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 数据管理 ── -->
+    <section>
+      <h2>数据管理</h2>
+      <div class="card">
+        <div class="field-row">
+          <span>清除所有已同步数据</span>
+          <button id="btn-clear" class="btn-danger">清除数据</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="options.js"></script>
+</body>
+</html>
